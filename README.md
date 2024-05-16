@@ -4,7 +4,7 @@
 
 ```bash
 git clone https://github.com/cybersaksham/Final_Year_Project
-cd Final-Year-Project
+cd Final_Year_Project
 npm --prefix ./frontend install
 npm --prefix ./backend install
 ```
@@ -47,3 +47,15 @@ Open http://localhost:3000 to connect to grafana.
 - password: admin
 
 ### Elastic Search Database
+
+- Run following command in terminal
+
+```bash
+docker inspect --format '{{ .NetworkSettings.Networks.final_year_project_default.Gateway }}' elasticsearch
+```
+
+- This will print gateway address of where docker is running.
+- Go to http://localhost:3000/connections/datasources
+- Click on the elastic search datasource created already there named `es-ctf`
+- Put `http://{Gateway_IP}:9200` in URl field and hit save button.
+- Now we are ready to see the data in dashboards.
