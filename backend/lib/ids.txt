@@ -1,0 +1,4 @@
+contest_elastic_search
+ongoing_contest_elastic_search
+completed_contest_elastic_search
+contest_details_${contest_id}

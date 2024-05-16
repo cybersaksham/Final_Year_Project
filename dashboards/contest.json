@@ -1,0 +1,754 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 4,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "panels": [],
+      "title": "Contest Performance",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "left",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 1
+      },
+      "id": 5,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Sum user.points"
+          }
+        ]
+      },
+      "pluginVersion": "10.2.2",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "settings": {
+                "size": "500"
+              },
+              "type": "raw_data"
+            }
+          ],
+          "query": "type.keyword=contest_leaderboard AND\ncontest.name.keyword:$contest_name",
+          "refId": "A",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "Leaderboard",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "_id": true,
+              "_index": true,
+              "_type": true,
+              "contest.name": true,
+              "highlight": true,
+              "sort": true,
+              "timestamp": true,
+              "type": true,
+              "user.id": true,
+              "user.rank": true
+            },
+            "indexByName": {
+              "_id": 1,
+              "_index": 2,
+              "_type": 3,
+              "contest.name": 4,
+              "highlight": 5,
+              "sort": 6,
+              "timestamp": 0,
+              "type": 7,
+              "user.flags": 10,
+              "user.name": 9,
+              "user.points": 11,
+              "user.rank": 8
+            },
+            "renameByName": {
+              "Sum user.flags": "Flags",
+              "Sum user.points": "Points",
+              "Sum user.rank": "Rank",
+              "user.flags": "Flags",
+              "user.name": "User",
+              "user.name.keyword": "Name",
+              "user.points": "Points",
+              "user.rank": "Rank"
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "Points"
+              }
+            ]
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Index",
+            "index": {
+              "asPercentile": false
+            },
+            "mode": "index",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": false
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Offset",
+            "mode": "reduceRow",
+            "reduce": {
+              "include": ["Index"],
+              "reducer": "count"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Rank",
+            "mode": "reduceRow",
+            "reduce": {
+              "include": ["Offset", "Index"],
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Index": true,
+              "Offset": true
+            },
+            "indexByName": {
+              "Flags": 2,
+              "Points": 3,
+              "Rank": 0,
+              "User": 1
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Hard"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 12,
+        "y": 1
+      },
+      "id": 3,
+      "options": {
+        "displayLabels": ["value"],
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "values": []
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "alias": "Easy",
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "type.keyword=challenge_details AND\ncontest.name.keyword:$contest_name AND\ndifficulty.keyword=easy",
+          "refId": "A",
+          "timeField": "timestamp"
+        },
+        {
+          "alias": "Medium",
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "type.keyword=challenge_details AND\ncontest.name.keyword:$contest_name AND\ndifficulty.keyword=medium",
+          "refId": "B",
+          "timeField": "timestamp"
+        },
+        {
+          "alias": "Hard",
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "type.keyword=challenge_details AND\ncontest.name.keyword:$contest_name AND\ndifficulty.keyword=hard",
+          "refId": "C",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "Difficulty Distribution of Challenges",
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Hard"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 9
+      },
+      "id": 4,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "never",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xField": "Category",
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "10.2.2",
+      "targets": [
+        {
+          "alias": "Easy",
+          "bucketAggs": [
+            {
+              "field": "challenge.category.keyword",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "type.keyword=challenge_details AND\ncontest.name.keyword:$contest_name AND\nchallenge.difficulty.keyword=easy",
+          "refId": "A",
+          "timeField": "timestamp"
+        },
+        {
+          "alias": "Medium",
+          "bucketAggs": [
+            {
+              "field": "challenge.category.keyword",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "type.keyword=challenge_details AND\ncontest.name.keyword:$contest_name AND\nchallenge.difficulty.keyword=medium",
+          "refId": "B",
+          "timeField": "timestamp"
+        },
+        {
+          "alias": "Hard",
+          "bucketAggs": [
+            {
+              "field": "challenge.category.keyword",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "type.keyword=challenge_details AND\ncontest.name.keyword:$contest_name AND\nchallenge.difficulty.keyword=hard",
+          "refId": "C",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "Category Distribution of Challenges",
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "challenge.category.keyword",
+            "mode": "outer"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Count 1": false,
+              "challenge.category.keyword 2": false,
+              "challenge.category.keyword 3": false
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Count 1": "Easy",
+              "Count 2": "Medium",
+              "Count 3": "Hard",
+              "challenge.category.keyword": "Category",
+              "challenge.category.keyword 1": "Category"
+            }
+          }
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 15,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 9
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "alias": "Participants",
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "1"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+          },
+          "metrics": [
+            {
+              "field": "count",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "type.keyword=total_participants_registered AND\ncontest.name.keyword:$contest_name",
+          "refId": "A",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "Total Participants",
+      "transformations": [],
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 38,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Contest 1",
+          "value": "Contest 1"
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+        },
+        "definition": "{\"find\":\"terms\",\"field\":\"contest.name.keyword\"}",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Contest Name",
+        "multi": false,
+        "name": "contest_name",
+        "options": [],
+        "query": "{\"find\":\"terms\",\"field\":\"contest.name.keyword\"}",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+        },
+        "filters": [],
+        "hide": 0,
+        "name": "Filters",
+        "skipUrlSync": false,
+        "type": "adhoc"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Contest Admin Dashboard",
+  "uid": "d273ea68-0ee9-4a9c-9431-76915bcef5fb",
+  "version": 14,
+  "weekStart": ""
+}

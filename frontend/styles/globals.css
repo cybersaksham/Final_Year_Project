@@ -1,0 +1,4 @@
+.disabledLink {
+  pointer-events: none;
+  color: gray;
+}

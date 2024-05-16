@@ -1,0 +1,64 @@
+version: "3.8"
+
+services:
+  # MongoDB
+  mongodb:
+    image: mongo:latest
+    restart: unless-stopped
+    volumes:
+      - mongodb-data:/data/db
+    ports:
+      - "27017:27017"
+
+  # Elasticsearch
+  elasticsearch:
+    image: elasticsearch:7.17.4
+    restart: unless-stopped
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: false
+
+  # Grafana
+  grafana:
+    image: grafana/grafana:latest
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+    # security.allow_embedding: true
+    environment:
+      GF_SECURITY_ALLOW_EMBEDDING: true
+
+  # React Frontend
+  react_frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "3001:3001"
+    environment:
+      PORT: 3001
+    restart: always
+
+  # Node Backend
+  node_backend:
+    build: ./backend
+    ports:
+      - "5500:5500"
+    volumes:
+      - ./backend:/app
+    environment:
+      PORT: 5500
+    restart: always
+
+volumes:
+  mongodb-data:
+  elasticsearch-data:
+  grafana-data:
+  fronted:
+  backend:
