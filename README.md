@@ -19,24 +19,6 @@ docker compose up -d
 - MongoDb will be running at http://localhost:27017
 - Elastic search will be running at http://localhost:9200
 
-## Running Frontend
-
-```bash
-cd frontend
-npm run dev
-```
-
-- Go to http://localhost:3001 to view the frontend
-
-## Running Backend
-
-```bash
-cd backend
-nodemon app.js
-```
-
-- Backend will be up at http://localhost:5500
-
 ## Configure Grafana
 
 Open http://localhost:3000 to connect to grafana.
@@ -59,3 +41,25 @@ docker inspect --format '{{ .NetworkSettings.Networks.final_year_project_default
 - Click on the elastic search datasource created already there named `es-ctf`
 - Put `http://{Gateway_IP}:9200` in URl field and hit save button.
 - Now we are ready to see the data in dashboards.
+
+## Running Frontend
+
+- In the root folder of repository run following:
+
+```bash
+cd frontend
+npm run dev
+```
+
+- Go to http://localhost:3001 to view the frontend
+
+## Running Backend
+
+- In the root folder of repository run following:
+
+```bash
+cd backend
+nodemon app.js
+```
+
+- Backend will be up at http://localhost:5500
