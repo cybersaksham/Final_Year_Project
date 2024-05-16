@@ -36,10 +36,7 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
-      },
+      "datasource": {},
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -149,7 +146,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+        "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
       },
       "fieldConfig": {
         "defaults": {
@@ -261,10 +258,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
-      },
+      "datasource": {},
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -435,10 +429,7 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
-      },
+      "datasource": {},
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -474,9 +465,10 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": false
+        "showThresholdMarkers": false,
+        "sizing": "auto"
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.4.3",
       "targets": [
         {
           "alias": "",
@@ -510,10 +502,7 @@
       "type": "gauge"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
-      },
+      "datasource": {},
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -649,10 +638,7 @@
       "type": "piechart"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
-      },
+      "datasource": {},
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -734,7 +720,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.4.3",
       "targets": [
         {
           "alias": "",
@@ -819,10 +805,7 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
-      },
+      "datasource": {},
       "gridPos": {
         "h": 8,
         "w": 12,
@@ -902,10 +885,7 @@
       "type": "logs"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
-      },
+      "datasource": {},
       "gridPos": {
         "h": 8,
         "w": 12,
@@ -984,19 +964,19 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 38,
+  "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-7d",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Admin Dashboard",
   "uid": "d51e97dc-3df6-4e7a-be26-590a7ceae9e9",
-  "version": 15,
+  "version": 5,
   "weekStart": ""
 }

@@ -189,9 +189,9 @@ router.post("/fetch", fetchUser, async (req, res) => {
   }
 });
 
-// router.post("/dummy", async (req, res) => {
-//   await dummyData();
-//   return res.send("success");
-// });
+router.post("/dummy", async (req, res) => {
+  await dummyData();
+  return res.send("success");
+});
 
 module.exports = router;

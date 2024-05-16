@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 4,
+  "id": 5,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -36,10 +36,7 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
-      },
+      "datasource": {},
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -90,7 +87,7 @@
           }
         ]
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.4.3",
       "targets": [
         {
           "alias": "",
@@ -225,10 +222,7 @@
       "type": "table"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
-      },
+      "datasource": {},
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -375,7 +369,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+        "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
       },
       "fieldConfig": {
         "defaults": {
@@ -591,10 +585,7 @@
       "type": "barchart"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
-      },
+      "datasource": {},
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -695,26 +686,26 @@
         }
       ],
       "title": "Total Participants",
-      "transformations": [],
       "type": "timeseries"
     }
   ],
   "refresh": "",
-  "schemaVersion": 38,
+  "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "Contest 1",
           "value": "Contest 1"
         },
         "datasource": {
           "type": "elasticsearch",
-          "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+          "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
         },
         "definition": "{\"find\":\"terms\",\"field\":\"contest.name.keyword\"}",
+        "description": "",
         "hide": 0,
         "includeAll": false,
         "label": "Contest Name",
@@ -722,22 +713,11 @@
         "name": "contest_name",
         "options": [],
         "query": "{\"find\":\"terms\",\"field\":\"contest.name.keyword\"}",
-        "refresh": 2,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
-      },
-      {
-        "datasource": {
-          "type": "elasticsearch",
-          "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
-        },
-        "filters": [],
-        "hide": 0,
-        "name": "Filters",
-        "skipUrlSync": false,
-        "type": "adhoc"
       }
     ]
   },
@@ -749,6 +729,6 @@
   "timezone": "",
   "title": "Contest Admin Dashboard",
   "uid": "d273ea68-0ee9-4a9c-9431-76915bcef5fb",
-  "version": 14,
+  "version": 3,
   "weekStart": ""
 }
