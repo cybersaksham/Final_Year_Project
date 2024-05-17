@@ -36,7 +36,10 @@
       "type": "row"
     },
     {
-      "datasource": {},
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
+      },
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -94,7 +97,7 @@
           "bucketAggs": [],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+            "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
           },
           "metrics": [
             {
@@ -222,7 +225,10 @@
       "type": "table"
     },
     {
-      "datasource": {},
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -296,7 +302,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+            "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
           },
           "metrics": [
             {
@@ -322,7 +328,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+            "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
           },
           "hide": false,
           "metrics": [
@@ -349,7 +355,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+            "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
           },
           "hide": false,
           "metrics": [
@@ -481,7 +487,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+            "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
           },
           "metrics": [
             {
@@ -510,7 +516,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+            "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
           },
           "hide": false,
           "metrics": [
@@ -540,7 +546,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+            "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
           },
           "hide": false,
           "metrics": [
@@ -585,7 +591,10 @@
       "type": "barchart"
     },
     {
-      "datasource": {},
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -671,7 +680,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+            "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
           },
           "metrics": [
             {
@@ -696,7 +705,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "Contest 1",
           "value": "Contest 1"
         },
@@ -722,13 +731,13 @@
     ]
   },
   "time": {
-    "from": "now-7d",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Contest Admin Dashboard",
   "uid": "d273ea68-0ee9-4a9c-9431-76915bcef5fb",
-  "version": 3,
+  "version": 7,
   "weekStart": ""
 }

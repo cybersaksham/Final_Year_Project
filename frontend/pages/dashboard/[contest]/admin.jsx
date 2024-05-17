@@ -21,7 +21,7 @@ const AdminDashboard = () => {
     <div style={{ height: "100vh" }}>
       {contestId && (
         <iframe
-          src={`http://localhost:3000/d/d273ea68-0ee9-4a9c-9431-76915bcef5fb/contest-admin-dashboard?orgId=1&from=now-24h&to=now&var-contest_name=${contestId}&theme=light`}
+          src={`http://localhost:3000/d/d273ea68-0ee9-4a9c-9431-76915bcef5fb/contest-admin-dashboard?orgId=1&theme=light&from=now-24h&to=now`}
           width="100%"
           height="100%"
           style={{ position: "absolute", top: "-75px" }}

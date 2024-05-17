@@ -36,7 +36,10 @@
       "type": "row"
     },
     {
-      "datasource": {},
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -81,8 +84,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -125,7 +127,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+            "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
           },
           "metrics": [
             {
@@ -195,8 +197,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -238,7 +239,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+            "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
           },
           "metrics": [
             {
@@ -258,7 +259,10 @@
       "type": "timeseries"
     },
     {
-      "datasource": {},
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -306,8 +310,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -365,7 +368,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+            "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
           },
           "metrics": [
             {
@@ -395,7 +398,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+            "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
           },
           "hide": false,
           "metrics": [
@@ -429,7 +432,10 @@
       "type": "row"
     },
     {
-      "datasource": {},
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -440,8 +446,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -484,7 +489,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+            "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
           },
           "metrics": [
             {
@@ -502,7 +507,10 @@
       "type": "gauge"
     },
     {
-      "datasource": {},
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -592,7 +600,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+            "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
           },
           "metrics": [
             {
@@ -619,7 +627,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+            "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
           },
           "hide": false,
           "metrics": [
@@ -638,7 +646,10 @@
       "type": "piechart"
     },
     {
-      "datasource": {},
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -657,8 +668,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -727,7 +737,7 @@
           "bucketAggs": [],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+            "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
           },
           "metrics": [
             {
@@ -805,7 +815,10 @@
       "type": "row"
     },
     {
-      "datasource": {},
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
+      },
       "gridPos": {
         "h": 8,
         "w": 12,
@@ -830,7 +843,7 @@
           "bucketAggs": [],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+            "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
           },
           "metrics": [
             {
@@ -885,7 +898,10 @@
       "type": "logs"
     },
     {
-      "datasource": {},
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
+      },
       "gridPos": {
         "h": 8,
         "w": 12,
@@ -910,7 +926,7 @@
           "bucketAggs": [],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "ab466b70-09de-4d04-a205-b6b7c847a687"
+            "uid": "cfaced5b-0ceb-4d60-9ae8-a6b3d4f62652"
           },
           "metrics": [
             {
@@ -977,6 +993,6 @@
   "timezone": "",
   "title": "Admin Dashboard",
   "uid": "d51e97dc-3df6-4e7a-be26-590a7ceae9e9",
-  "version": 5,
+  "version": 6,
   "weekStart": ""
 }
